@@ -1,11 +1,11 @@
 {
-  "name": "web-project-around-react",
+  "name": "web_project_around_react",
   "version": "0.0.0",
   "lockfileVersion": 3,
   "requires": true,
   "packages": {
     "": {
-      "name": "web-project-around-react",
+      "name": "web_project_around_react",
       "version": "0.0.0",
       "dependencies": {
         "react": "^19.1.0",
