@@ -1,12 +1,50 @@
-# React + Vite
+# Tripleten web_project_around
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+añadir link
 
-Currently, two official plugins are available:
+## Proyecto 13: Alrededor de los EE.UU-REACT
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Siguiendo con la creación de proyectos, en esta ocación es la creacion de una red social para compartir momentos inolvidables, usando REACT con VITE.
 
-## Expanding the ESLint configuration
+## Características del proyecto
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- HTML5 semántico
+- Flexbox
+- Position
+- Metodología BEM
+- CSS
+- FIGMA
+- GIT BASH
+- GITHUB
+- GITHUB PAGES
+- BRANCH
+- GRID LAYOUT
+- JAVASCRIPT JSX
+- API's
+- REACT
+- VITE
+
+## Dependencias
+
+- gh-pages: ^6.3.0
+- react: ^18.3.1
+- react-dom: ^18.3.1
+- react-hook-form: ^7.54.2
+
+## Funcionalidad
+
+La página es una galeria de arte, en la que se muestran los lugares de donde provienen nuestros colegas, reunidos en la ciudad Triple Ten iniciando con la bienvenida y descripción:
+
+    -Se muestra el perfil de usuario
+    -Sección de fotos
+    -Edición de perfil
+    -Borar tarjeta de imagen
+    -Boton like funcional
+    -Agregar nueva imagen
+
+## Mejoras
+
+En un futuro se agregaran mas features como agregar mas fotos y darle like, junto con:
+
+     -Guardado de datos base de datos
+     -Implementación Back-end
