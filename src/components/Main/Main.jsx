@@ -12,7 +12,7 @@ import { validationConfig } from '@utils/validationConfig.js';
 function Main(props) {
     const { popup, onOpenPopup, onClosePopup, cards, onCardLike, onCardDelete } = props;
     const newCardPopup = { title: "Nuevo lugar", children: <NewCard validationConfig={validationConfig} /> };
-    const editProfolePopup = { title: "Nuevo lugar", children: <EditProfile validationConfig={validationConfig} /> };
+    const editProfolePopup = { title: "Editar datos de perfil", children: <EditProfile validationConfig={validationConfig} /> };
     const editAvatarPopup = { title: "Nuevo avatar", children: <EditAvatar validationConfig={validationConfig} /> };
     const { currentUser } = useContext(CurrentUserContext);
 
