@@ -1,5 +1,5 @@
 import React, { useRef, useContext } from "react";
-import { useCurrentUserContext } from "../../../../contexts/CurrentUserContext.jsx";
+import { useCurrentUserContext } from "../../../../contexts/CurrentUserContext.js";
 
 export default function EditAvatar(props) {
   const { onClose } = props;

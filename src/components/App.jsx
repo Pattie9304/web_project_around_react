@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import Header from "../components/Header/Header.jsx";
 import Footer from "./Footer/Footer.jsx";
 import Main from "./Main/Main.jsx";
-import { useCurrentUserContext } from "../contexts/CurrentUserContext.jsx";
+import { useCurrentUserContext } from "../contexts/CurrentUserContext.js";
 import api from "../utils/api.js";
 
 export default function App() {

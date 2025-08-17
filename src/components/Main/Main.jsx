@@ -6,7 +6,7 @@ import EditProfile from "./Popup/EditProfile/EditProfile.jsx";
 import Popup from "./Popup/Popup.jsx";
 import Card from "../../components/Cards/Cards.jsx";
 import ImagePopup from "./Popup/ImagePopup/ImagePopup.jsx";
-import { useCurrentUserContext } from "../../contexts/CurrentUserContext.jsx";
+import { useCurrentUserContext } from "../../contexts/CurrentUserContext.js";
 
 function Main(props) {
   const {

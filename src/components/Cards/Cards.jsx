@@ -1,4 +1,4 @@
-import deleteButton from "../../assets/images//trash.png";
+import deleteButton from "../../assets/images/trash.png";
 import React from "react";
 
 export default function Card(props) {
