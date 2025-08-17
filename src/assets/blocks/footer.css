@@ -1,17 +1,13 @@
 .footer {
-  max-width: 880px;
-  margin: 60px auto;
+  display: flex;
+  max-width: 100%;
+  font-family: "Inter-Regular";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 22px;
   color: #545454;
-}
-
-@media screen and (min-width: 320px) and (max-width: 584px) {
-  .footer {
-    max-width: 290px;
-  }
-}
-
-@media screen and (min-width: 585px) and (max-width: 880px) {
-  .footer {
-    max-width: 700px;
-  }
+  margin: 0 auto;
+  margin-top: 67px;
+  margin-bottom: 60px;
 }

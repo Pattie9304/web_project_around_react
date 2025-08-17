@@ -2,6 +2,7 @@
 @import url(../src/assets/vendor/fonts/fonts.css);
 @import url(../src/assets/blocks/page.css);
 @import url(../src/assets/blocks/header.css);
-@import url(../src/assets/blocks/main.css);
+@import url(../src/assets/blocks/profile.css);
+@import url(../src/assets/blocks/elements.css);
 @import url(../src/assets/blocks/popup.css);
 @import url(../src/assets/blocks/footer.css);

@@ -1,82 +1,123 @@
-import { useContext } from 'react';
-import Popup from '../Main/components/Popup/Popup.jsx';
-import NewCard from '../Main/components/Popup/NewCard/NewCard.jsx';
-import EditProfile from '../Main/components/Popup/EditProfile/EditProfile.jsx';
-import EditAvatar from '../Main/components/Popup/EditAvatar/EditAvatar.jsx';
-import RemoveCard from '../Main/components/Popup/RemoveCard/RemoveCard.jsx';
-import Card from '../Main/components/Card/Card.jsx';
-import ImagePopup from '../Main/components/Popup/ImagePopup/ImagePopup.jsx';
-import CurrentUserContext from '@contexts/CurrentUserContext.js';
-import { validationConfig } from '@utils/validationConfig.js';
+import pincelButton from "../../assets/images/edit-button.png";
+import { useEffect } from "react";
+import NewCard from "./Popup/NewCard/NewCard.jsx";
+import EditAvatar from "./Popup/EditAvatar/EditAvatar.jsx";
+import EditProfile from "./Popup/EditProfile/EditProfile.jsx";
+import Popup from "./Popup/Popup.jsx";
+import Card from "../../components/Cards/Cards.jsx";
+import ImagePopup from "./Popup/ImagePopup/ImagePopup.jsx";
+import { useCurrentUserContext } from "../../contexts/CurrentUserContext.jsx";
 
 function Main(props) {
-    const { popup, onOpenPopup, onClosePopup, cards, onCardLike, onCardDelete } = props;
-    const newCardPopup = { title: "Nuevo lugar", children: <NewCard validationConfig={validationConfig} /> };
-    const editProfolePopup = { title: "Editar datos de perfil", children: <EditProfile validationConfig={validationConfig} /> };
-    const editAvatarPopup = { title: "Nuevo avatar", children: <EditAvatar validationConfig={validationConfig} /> };
-    const { currentUser } = useContext(CurrentUserContext);
+  const {
+    onOpenPopup,
+    onClosePopup,
+    popup,
+    cards,
+    onCardLike,
+    onCardDelete,
+    onAddPlaceSubmit,
+  } = props;
 
-    function handleCardClick(card) {
-        onOpenPopup({ children: <ImagePopup card={card} /> });
-    }
+  const userContext = useCurrentUserContext();
 
-    function handleTrashClick(card) {
-        onOpenPopup({ title: "¿Estás seguro?", children: <RemoveCard onCardDelete={onCardDelete} card={card}/> });
-    }
+  const newCardPopup = {
+    title: "Nuevo lugar",
+    Children: <NewCard onAddPlaceSubmit={onAddPlaceSubmit} />,
+  };
+  const editAvatarPopup = {
+    title: "Cambiar foto de perfil",
+    Children: <EditAvatar onClose={onClosePopup} />,
+  };
+  const editProfilePopup = {
+    title: "Editar perfil",
+    Children: <EditProfile onClose={onClosePopup} />,
+  };
 
-    return (
-        <main className="main">
-            <div className="main__profile">
-                <div className="main__content-image">
-                    <img src={currentUser.avatar}
-                    alt="profile-image"
-                    className="main__profile-image"
-                    />
-                    <button 
-                    type="button"
-                    className="main__button main__button_img"
-                    onClick={() => onOpenPopup(editAvatarPopup)}
-                    >
-                        &#x1F58C;
-                    </button>
-                </div>
-                <div className="main__content-paragraph">
-                    <p className="main__paragraph main__paragraph_name">{currentUser.name}</p>
-                    <p className="main__paragraph main__paragraph_job">{currentUser.about}</p>
-                    <button
-                    type="button"
-                    className="main__button main__button_edit"
-                    onClick={() => onOpenPopup(editProfolePopup)}
-                    >
-                    &#x1F58C;
-                    </button>
-                </div>
-                <button
-                aria-label="Add card" 
-                type="button" 
-                className="main__button main__button_add" 
-                onClick={() => onOpenPopup(newCardPopup)}>
-                &#x1F7A3;
-                </button>
+  return (
+    <main className="content">
+      <section className="profile">
+        <div className="profile__content">
+          <div className="profile__avatar-container">
+            <img
+              src={userContext?.currentUser?.avatar}
+              alt="Foto Avatar"
+              className="profile__avatar"
+              id="profile-avatar"
+            />
+            <button
+              className="profile__avatar-button"
+              type="button"
+              aria-label="Edit Avatar"
+              onClick={() => onOpenPopup(editAvatarPopup)}
+            >
+              <img
+                src={pincelButton}
+                alt="Editar foto"
+                className="profile__avatar-edit"
+              />
+            </button>
+          </div>
+          <div className="profile__info">
+            <div className="profile__header">
+              <h1 className="profile__header-title" id="profile-name">
+                {userContext?.isLoadingUser
+                  ? "Cargando..."
+                  : userContext?.currentUser?.name}
+              </h1>
+              <button
+                aria-label="Edit Profile"
+                type="button"
+                className="profile__header-button"
+                onClick={() => onOpenPopup(editProfilePopup)}
+              ></button>
             </div>
-            <ul className="main__gallery">
-                {cards.map((card) => (
-                    <Card
-                    key={card._id}
-                    card={card}
-                    handleCardClick={handleCardClick}
-                    onCardLike={onCardLike}
-                    handleTrashClick={handleTrashClick}
-                    />
-                ))}
-            </ul>
-            {popup && (
-                <Popup onClose={onClosePopup} title={popup.title}>
-                {popup.children}
-            </Popup>
-        )}
-        </main>
-    );
+            <p className="profile__description" id="profile-description">
+              {userContext?.isLoadingUser
+                ? "Cargando..."
+                : userContext?.currentUser?.about}
+            </p>
+          </div>
+        </div>
+        <div className="profile__button">
+          <button
+            aria-label="Add card"
+            className="profile__button-add"
+            type="button"
+            onClick={() => onOpenPopup(newCardPopup)}
+          >
+            +
+          </button>
+        </div>
+      </section>
+
+      {popup && (
+        <Popup onClose={onClosePopup} title={popup.title}>
+          {popup.card && (
+            <ImagePopup card={popup.card} onClose={onClosePopup} />
+          )}
+          {popup.Children}
+        </Popup>
+      )}
+
+      <section className="elements">
+        <div className="elements__grid">
+          {cards.map((cardElm) => {
+            return (
+              <Card
+                key={cardElm._id}
+                card={cardElm}
+                handleOpenPopup={onOpenPopup}
+                onCardLike={onCardLike}
+                isLiked={cardElm?.isLiked}
+                onCardDelete={onCardDelete}
+              />
+            );
+          })}
+        </div>
+      </section>
+    </main>
+  );
 }
 
 export default Main;
